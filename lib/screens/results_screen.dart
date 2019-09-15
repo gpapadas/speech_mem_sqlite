@@ -109,7 +109,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
               style: TextStyle(fontSize: 15),
             ),
             Text(
-              'Date: ${transcription.datetime}',
+              'Date: ${DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime))}',
               style: TextStyle(fontSize: 15),
             ),
             // SizedBox(height: 12),
