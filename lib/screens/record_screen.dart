@@ -21,10 +21,6 @@ class _RecordScreenState extends State<RecordScreen> {
 
   String _currentLocale;
   String transcriptionText = '';
-
-  // data that will be written to database
-  String data;
-
   int transcriptionId;
 
   @override
@@ -173,74 +169,6 @@ class _RecordScreenState extends State<RecordScreen> {
                 onPressed: addTranscription,
               ),
             ),
-
-            // SizedBox(
-            //   height: 20.0,
-            // ),
-            // RaisedButton(
-            //   child: Text('Read file'),
-            //   onPressed: readTranscription,
-            // ),
-            // SizedBox(
-            //   height: 20.0,
-            // ),
-            // Container(
-            //   child: Text('${data ?? "File is empty"}'),
-            // ),
-            // SizedBox(
-            //   height: 20.0,
-            // ),
-            // RaisedButton(
-            //   child: Text('Write file'),
-            //   onPressed: writeTranscription,
-            // ),
-            // SizedBox(
-            //   height: 20.0,
-            // ),
-            // RaisedButton(
-            //   child: Text('Save'),
-            //   onPressed: () {
-            //     if (_transcriptionDone) {
-            //       writeTranscription();
-            //       Navigator.push(
-            //           context,
-            //           MaterialPageRoute(
-            //               builder: (context) => SuccessScreen(
-            //                     resultText: transcription,
-            //                     storage: widget.storage,
-            //                   )));
-            //       // Navigator.pushNamed(context, SuccessScreen.id, arguments: {
-            //       //   'resultText': transcription,
-            //       // });
-            //     }
-            //   },
-            // ),
-            // SizedBox(
-            //   height: 20.0,
-            // ),
-            // RaisedButton(
-            //   child: Text('Get Directory'),
-            //   onPressed: getAppDirectory,
-            // ),
-            // SizedBox(
-            //   height: 20.0,
-            // ),
-            // FutureBuilder<Directory>(
-            //   future: _appDocDir,
-            //   builder: (BuildContext context, AsyncSnapshot<Directory> snapshot) {
-            //     Text text = Text('');
-            //     if (snapshot.connectionState == ConnectionState.done) {
-            //       if (snapshot.hasError) {
-            //         text = Text('Error: ${snapshot.error}');
-            //       } else if (snapshot.hasData) {
-            //         text = Text('Path: ${snapshot.data.path}');
-            //       } else {
-            //         text = Text('Unavailable');
-            //       }
-            //     }
-            //     return Container(child: text);
-            //   },
-            // ),
           ],
         ),
       ),

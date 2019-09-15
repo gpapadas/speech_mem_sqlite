@@ -64,7 +64,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                   height: 20.0,
                 ),
                 Container(
-                  child: Text('${transcriptionName ?? "File is empty"}'),
+                  child: Text('${transcriptionName ?? ""}'),
                 ),
                 SizedBox(
                   height: 20.0,
@@ -112,22 +112,6 @@ class _ResultsScreenState extends State<ResultsScreen> {
               'Date: ${DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime))}',
               style: TextStyle(fontSize: 15),
             ),
-            // SizedBox(height: 12),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.end,
-            //   children: <Widget>[
-            //     FlatButton(
-            //       onPressed: () => updateTranscription(transcription),
-            //       child: Text('Update todo', style: TextStyle(color: Colors.white)),
-            //       color: Colors.green,
-            //     ),
-            //     SizedBox(width: 8),
-            //     FlatButton(
-            //       onPressed: () => deleteTranscription(transcription),
-            //       child: Text('Delete'),
-            //     ),
-            //   ],
-            // ),
           ],
         ),
       ),
@@ -136,7 +120,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
 }
 
 // updateTranscription(Transcription transcription) async {
-//   transcription.name = 'please 🤫';
+//   transcription.name = 'updated record';
 //   await RepositoryServiceTranscription.updateTranscription(transcription);
 //   setState(() {
 //     future = RepositoryServiceTranscription.getAllTranscriptions();
