@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:speech_mem_sqlite/models/transcription.dart';
 import 'package:speech_mem_sqlite/data/repository_service_transcription.dart';
+import 'package:speech_mem_sqlite/widgets/transcriptions_list.dart';
+import 'package:speech_mem_sqlite/widgets/transcription_tile.dart';
 
 class ResultsScreen extends StatefulWidget {
   static const String id = 'success_screen';
@@ -49,33 +51,33 @@ class _ResultsScreenState extends State<ResultsScreen> {
           child: Container(
             child: Column(
               children: <Widget>[
-                Text(widget.resultText,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    )),
-                SizedBox(
-                  height: 20.0,
-                ),
-                RaisedButton(
-                  child: Text('Read last record'),
-                  onPressed: readTranscription,
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  child: Text('${transcriptionName ?? ""}'),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                RaisedButton(
-                  child: Text('Read all records'),
-                  onPressed: readTranscription,
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
+                // Text(widget.resultText,
+                //     style: TextStyle(
+                //       fontSize: 20.0,
+                //     )),
+                // SizedBox(
+                //   height: 20.0,
+                // ),
+                // RaisedButton(
+                //   child: Text('Read last record'),
+                //   onPressed: readTranscription,
+                // ),
+                // SizedBox(
+                //   height: 20.0,
+                // ),
+                // Container(
+                //   child: Text('${transcriptionName ?? ""}'),
+                // ),
+                // SizedBox(
+                //   height: 20.0,
+                // ),
+                // RaisedButton(
+                //   child: Text('Read all records'),
+                //   onPressed: readTranscription,
+                // ),
+                // SizedBox(
+                //   height: 20.0,
+                // ),
                 FutureBuilder<List<Transcription>>(
                   future: future,
                   builder: (context, snapshot) {
@@ -97,25 +99,35 @@ class _ResultsScreenState extends State<ResultsScreen> {
     );
   }
 
-  Card buildItem(Transcription transcription) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Transcription: ${transcription.name}',
-              style: TextStyle(fontSize: 15),
-            ),
-            Text(
-              'Date: ${DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime))}',
-              style: TextStyle(fontSize: 15),
-            ),
-          ],
-        ),
-      ),
+  ListView buildItem(Transcription transcription) {
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return TranscriptionTile(
+          //isChecked: tasks[index].isDone,
+          transcriptionName: 'name',
+          transcriptionDate: 'date' ,
+        );
+      },
+      //itemCount: 5,
     );
+    // return Card(
+    //   child: Padding(
+    //     padding: const EdgeInsets.all(8.0),
+    //     child: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: <Widget>[
+    //         Text(
+    //           'Transcription: ${transcription.name}',
+    //           style: TextStyle(fontSize: 15),
+    //         ),
+    //         Text(
+    //           'Date: ${DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime))}',
+    //           style: TextStyle(fontSize: 15),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }
 
