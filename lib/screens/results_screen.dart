@@ -9,8 +9,7 @@ import 'package:speech_mem_sqlite/widgets/transcription_tile.dart';
 class ResultsScreen extends StatefulWidget {
   static const String id = 'success_screen';
 
-  ResultsScreen(
-      {this.resultText, this.transcriptionId});
+  ResultsScreen({this.resultText, this.transcriptionId});
 
   final String resultText;
   final int transcriptionId;
@@ -46,88 +45,111 @@ class _ResultsScreenState extends State<ResultsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                // Text(widget.resultText,
-                //     style: TextStyle(
-                //       fontSize: 20.0,
-                //     )),
-                // SizedBox(
-                //   height: 20.0,
-                // ),
-                // RaisedButton(
-                //   child: Text('Read last record'),
-                //   onPressed: readTranscription,
-                // ),
-                // SizedBox(
-                //   height: 20.0,
-                // ),
-                // Container(
-                //   child: Text('${transcriptionName ?? ""}'),
-                // ),
-                // SizedBox(
-                //   height: 20.0,
-                // ),
-                // RaisedButton(
-                //   child: Text('Read all records'),
-                //   onPressed: readTranscription,
-                // ),
-                // SizedBox(
-                //   height: 20.0,
-                // ),
-                FutureBuilder<List<Transcription>>(
-                  future: future,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Column(
-                          children: snapshot.data
-                              .map((transcription) => buildItem(transcription))
-                              .toList());
-                    } else {
-                      return SizedBox();
-                    }
-                  },
-                )
-              ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          // Text(widget.resultText,
+          //     style: TextStyle(
+          //       fontSize: 20.0,
+          //     )),
+          // SizedBox(
+          //   height: 20.0,
+          // ),
+          // RaisedButton(
+          //   child: Text('Read last record'),
+          //   onPressed: readTranscription,
+          // ),
+          // SizedBox(
+          //   height: 20.0,
+          // ),
+          // Container(
+          //   child: Text('${transcriptionName ?? ""}'),
+          // ),
+          // SizedBox(
+          //   height: 20.0,
+          // ),
+          // RaisedButton(
+          //   child: Text('Read all records'),
+          //   onPressed: readTranscription,
+          // ),
+          // SizedBox(
+          //   height: 20.0,
+          // ),
+          Expanded(
+            child: Container(
+              child: FutureBuilder<List<Transcription>>(
+                future: future,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Column(
+                        children: snapshot.data
+                            .map((transcription) => buildList(transcription))
+                            // TranscriptionsList(
+                            //       transcriptionName: transcription.name,
+                            //       transcriptionDate:
+                            //           DateFormat('dd/MM/yyyy').format(
+                            //         DateTime.fromMillisecondsSinceEpoch(
+                            //             transcription.datetime),
+                            //       ),
+                            //     ))
+                            .toList());
+                  } else {
+                    return SizedBox();
+                  }
+                },
+              ),
             ),
-          ),
-        ),
+          )
+        ],
       ),
     );
   }
 
-  ListView buildItem(Transcription transcription) {
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        return TranscriptionTile(
-          //isChecked: tasks[index].isDone,
-          transcriptionName: 'name',
-          transcriptionDate: 'date' ,
-        );
-      },
-      //itemCount: 5,
+  Expanded buildList(Transcription transcription) {
+    return Expanded(
+          child: ListView.builder(
+        
+        itemBuilder: (context, index) {
+          return TranscriptionTile(
+            //isChecked: tasks[index].isDone,
+            transcriptionName: 'name',
+            transcriptionDate: 'date',
+          );
+        },
+        // itemCount: 5,
+      ),
     );
-    // return Card(
-    //   child: Padding(
-    //     padding: const EdgeInsets.all(8.0),
-    //     child: Column(
-    //       crossAxisAlignment: CrossAxisAlignment.start,
-    //       children: <Widget>[
-    //         Text(
-    //           'Transcription: ${transcription.name}',
-    //           style: TextStyle(fontSize: 15),
-    //         ),
-    //         Text(
-    //           'Date: ${DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime))}',
-    //           style: TextStyle(fontSize: 15),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
+  }
+
+  Card buildItem(Transcription transcription) {
+    // return ListView.builder(
+    //   itemBuilder: (context, index) {
+    //     return TranscriptionTile(
+    //       //isChecked: tasks[index].isDone,
+    //       transcriptionName: 'name',
+    //       transcriptionDate: 'date',
+    //     );
+    //   },
+    //   //itemCount: 5,
     // );
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Transcription: ${transcription.name}',
+              style: TextStyle(fontSize: 15),
+            ),
+            Text(
+              'Date: ${DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime))}',
+              style: TextStyle(fontSize: 15),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
