@@ -77,22 +77,24 @@ class _ResultsScreenState extends State<ResultsScreen> {
           // ),
           Expanded(
             child: Container(
-              child: FutureBuilder<List<Transcription>>(
+              child: FutureBuilder(
                 future: future,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return Column(
-                        children: snapshot.data
-                            .map((transcription) => buildList(transcription))
-                            // TranscriptionsList(
-                            //       transcriptionName: transcription.name,
-                            //       transcriptionDate:
-                            //           DateFormat('dd/MM/yyyy').format(
-                            //         DateTime.fromMillisecondsSinceEpoch(
-                            //             transcription.datetime),
-                            //       ),
-                            //     ))
-                            .toList());
+                    return ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        Transcription transcription = snapshot.data[index];
+                        return TranscriptionTile(
+                          transcriptionName: transcription.name,
+                          transcriptionDate: DateFormat('dd/MM/yyyy').format(
+                            DateTime.fromMillisecondsSinceEpoch(
+                              transcription.datetime,
+                            ),
+                          ),
+                        );
+                      },
+                    );
                   } else {
                     return SizedBox();
                   }
@@ -105,52 +107,26 @@ class _ResultsScreenState extends State<ResultsScreen> {
     );
   }
 
-  Expanded buildList(Transcription transcription) {
-    return Expanded(
-          child: ListView.builder(
-        
-        itemBuilder: (context, index) {
-          return TranscriptionTile(
-            //isChecked: tasks[index].isDone,
-            transcriptionName: 'name',
-            transcriptionDate: 'date',
-          );
-        },
-        // itemCount: 5,
-      ),
-    );
-  }
-
-  Card buildItem(Transcription transcription) {
-    // return ListView.builder(
-    //   itemBuilder: (context, index) {
-    //     return TranscriptionTile(
-    //       //isChecked: tasks[index].isDone,
-    //       transcriptionName: 'name',
-    //       transcriptionDate: 'date',
-    //     );
-    //   },
-    //   //itemCount: 5,
-    // );
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Transcription: ${transcription.name}',
-              style: TextStyle(fontSize: 15),
-            ),
-            Text(
-              'Date: ${DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime))}',
-              style: TextStyle(fontSize: 15),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Card buildItem(Transcription transcription) {
+  //   return Card(
+  //     child: Padding(
+  //       padding: const EdgeInsets.all(8.0),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: <Widget>[
+  //           Text(
+  //             'Transcription: ${transcription.name}',
+  //             style: TextStyle(fontSize: 15),
+  //           ),
+  //           Text(
+  //             'Date: ${DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime))}',
+  //             style: TextStyle(fontSize: 15),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+//   }
 }
 
 // updateTranscription(Transcription transcription) async {
