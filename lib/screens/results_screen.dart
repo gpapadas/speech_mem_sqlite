@@ -48,13 +48,6 @@ class _ResultsScreenState extends State<ResultsScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // Text(widget.resultText,
-          //     style: TextStyle(
-          //       fontSize: 20.0,
-          //     )),
-          // SizedBox(
-          //   height: 20.0,
-          // ),
           // RaisedButton(
           //   child: Text('Read last record'),
           //   onPressed: readTranscription,
@@ -81,20 +74,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                 future: future,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    return ListView.builder(
-                      itemCount: snapshot.data.length,
-                      itemBuilder: (context, index) {
-                        Transcription transcription = snapshot.data[index];
-                        return TranscriptionTile(
-                          transcriptionName: transcription.name,
-                          transcriptionDate: DateFormat('dd/MM/yyyy').format(
-                            DateTime.fromMillisecondsSinceEpoch(
-                              transcription.datetime,
-                            ),
-                          ),
-                        );
-                      },
-                    );
+                    return TranscriptionsList(snapshot);
                   } else {
                     return SizedBox();
                   }
