@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speech_mem_sqlite/screens/transcription_edit.dart';
 
 class TranscriptionTile extends StatelessWidget {
   TranscriptionTile({this.transcriptionName, this.transcriptionDate});
@@ -10,22 +11,22 @@ class TranscriptionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        transcriptionName,
-        // style: TextStyle(
-        //   decoration:
-        //       isChecked ? TextDecoration.lineThrough : TextDecoration.none,
-        // ),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => TranscriptionEdit(transcriptionName),
+        ));
+      },
+      child: ListTile(
+        title: Text(
+          transcriptionName,
+        ),
+        trailing: Text(
+          transcriptionDate,
+        ),
       ),
-      trailing: Text(
-        transcriptionDate,
-      ),
-      // trailing: Checkbox(
-      //   activeColor: Colors.lightBlueAccent,
-      //   value: isChecked,
-      //   onChanged: checkboxCallback,
-      // ),
     );
   }
 }
