@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:speech_mem_sqlite/models/transcription.dart';
 import 'package:speech_mem_sqlite/data/repository_service_transcription.dart';
 import 'package:speech_mem_sqlite/widgets/transcriptions_list.dart';
-import 'package:speech_mem_sqlite/widgets/transcription_tile.dart';
 
 class ResultsScreen extends StatefulWidget {
   static const String id = 'success_screen';
