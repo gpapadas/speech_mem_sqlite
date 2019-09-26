@@ -34,8 +34,6 @@ class _ResultsScreenState extends State<ResultsScreen> {
         widget.transcriptionId);
     setState(() {
       transcriptionName = transcription.name;
-      // var format = DateFormat('yMd');
-      // transcriptionDate = format.format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime));
     });
     print(transcription.name);
   }
@@ -46,26 +44,6 @@ class _ResultsScreenState extends State<ResultsScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // RaisedButton(
-          //   child: Text('Read last record'),
-          //   onPressed: readTranscription,
-          // ),
-          // SizedBox(
-          //   height: 20.0,
-          // ),
-          // Container(
-          //   child: Text('${transcriptionName ?? ""}'),
-          // ),
-          // SizedBox(
-          //   height: 20.0,
-          // ),
-          // RaisedButton(
-          //   child: Text('Read all records'),
-          //   onPressed: readTranscription,
-          // ),
-          // SizedBox(
-          //   height: 20.0,
-          // ),
           Expanded(
             child: Container(
               child: FutureBuilder(
@@ -84,27 +62,6 @@ class _ResultsScreenState extends State<ResultsScreen> {
       ),
     );
   }
-
-  // Card buildItem(Transcription transcription) {
-  //   return Card(
-  //     child: Padding(
-  //       padding: const EdgeInsets.all(8.0),
-  //       child: Column(
-  //         crossAxisAlignment: CrossAxisAlignment.start,
-  //         children: <Widget>[
-  //           Text(
-  //             'Transcription: ${transcription.name}',
-  //             style: TextStyle(fontSize: 15),
-  //           ),
-  //           Text(
-  //             'Date: ${DateFormat('dd/MM/yyyy').format(DateTime.fromMillisecondsSinceEpoch(transcription.datetime))}',
-  //             style: TextStyle(fontSize: 15),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-//   }
 }
 
 // updateTranscription(Transcription transcription) async {

@@ -147,12 +147,7 @@ class _RecordScreenState extends State<RecordScreen> {
             ),
             Container(
               width: MediaQuery.of(context).size.width *
-                  0.6, // 60% of the width of the entire screen
-              // decoration: BoxDecoration(
-              //   color: Colors.cyanAccent.shade100,
-              //   borderRadius: BorderRadius.circular(6.0),
-              // ),
-
+                  0.8, // 80% of the width of the entire screen
               padding: EdgeInsets.symmetric(
                 vertical: 10.0,
                 horizontal: 10.0,

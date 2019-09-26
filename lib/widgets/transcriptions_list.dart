@@ -13,6 +13,7 @@ class TranscriptionsList extends StatefulWidget {
 }
 
 class _TranscriptionsListState extends State<TranscriptionsList> {
+  
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

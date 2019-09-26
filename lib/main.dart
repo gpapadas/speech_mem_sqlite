@@ -6,8 +6,6 @@ import 'package:speech_mem_sqlite/screens/record_screen.dart';
 import 'package:speech_mem_sqlite/screens/results_screen.dart';
 import 'package:speech_mem_sqlite/data/database_creator.dart';
 
-// void main() => runApp(MyApp());
-
 void main() async {
   await DatabaseCreator().initDatabase();
   runApp(MyApp());
